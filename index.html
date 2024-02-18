@@ -51,7 +51,7 @@
                   <div class="">
                     <h1 class="lg:text-5xl text-2xl lg:pb-7 pb-3  font-extrabold text-[#FFF]">End-to-End Travel with <br> <span class="text-[#1DD100]">P Paribahan</span></h1>
                     <p class="lg:pb-8 text-[18px]">Yes, you can run unit tests and view the results directly within the app. The <br> integrated testing features allow for a streamlined .</p>
-                    <button class="btn bg-[#1DD100] border-none mx-10 my-6 rounded-xl">Buy Tickets</button>
+                    <button id="buyTicket" class="btn bg-[#1DD100] border-none mx-10 my-6 rounded-xl">Buy Tickets</button>
                   </div>
                 </div>
               </div>
@@ -103,12 +103,10 @@
             <div class="container lg:mx-auto  lg:mt-16 mt-10 items-center justify-center flex">
                 <button class="btn bg-[#FFF] border-[#1DD100] text-[#1DD100]">See All Offers</button>
             </div>
-
         </section>
 
         <!-- Ph Paribahan Start -->
-
-        <section class="max-w-[1440px] h-[1000px] mx-auto bg-[#F7F8F8] pt-[120px] mt-14">
+        <section id="phParibahan" class="max-w-[1440px] h-[700px] mx-auto bg-[#F7F8F8] pt-[120px] mt-14 mb-7 rounded-3xl border border-t-[#1DD100]">
            <h1 class="text-center text-4xl font-bold mb-5">P.H Paribahan</h1>
            <p class="text-center pb-12">Yes, you can run unit tests and view the results directly within the app. The integrated <br>  testing features allow for a streamlined .</p>
 
@@ -160,23 +158,153 @@
                   <span class="text-xl font-semibold">Per Seat</span> </h1>
               </div>
           </div>
-
-
-
         </section>
-
        <!-- Ph Paribahan End --> 
 
+
+        <!-- Select Seat Section Start -->
+     <section class="pt-6 border rounded-3xl">
+      <div class="flex w-full">
+        <div class="flex-1">
+          <h3 class="pl-8 text-2xl pb-2">Select your seat</h3>
+
+          <!-- border -->
+          <div class="border border-[#03071233] w-[830px] mx-auto mt-6"></div>
+
+          <div class="flex justify-between mx-8 my-5 ">
+            <div class="flex gap-1">
+              <img src="images/seat-gray.png" alt=""><p class="font-medium">Available</p>
+            </div>
+            <div class="flex gap-1">
+              <img src="images/seat-green-filled.png" alt=""><p class="text-[#1DD100] font-medium">Selected</p>
+            </div>
+          </div>
+          <!-- border -->
+          <div class="border border-[#03071233] w-[830px] mx-auto mb-10"></div>
+
+          <button class="btn w-[90px] h-[50px] ml-[700px]"><img src="images/tabler-icon-steering-wheel.png" alt=""></button>
+
+          <div class="flex flex-col gap-5" id="seats"></div>
+        </div>
+        <div class="basis-[30%]">
+          <h3>Select your seat</h3>
+          <div class="bg-gray-200 p-3">
+            <div class="flex justify-between">
+              <h4>Seat</h4>
+              <h4>Class</h4>
+              <h4>Price</h4>
+            </div>
+            <div id="selected-seats">
+
+            </div>
+            <div class="flex justify-between mt-10">
+              <h4>Total Price</h4>
+              <h4 id="total-price">BDT 0</h4>
+            </div>
+            <div class="flex gap-2">
+              <input id="coupon-input" type="text" class="flex-1" />
+              <button id="applyBtn" class="bg-green-500 p-2 text-white">
+                Apply
+              </button>
+            </div>
+            <div class="flex justify-between">
+              <h4>Grand total</h4>
+              <h4 id="grand-price">BDT 0</h4>
+            </div>
+          </div>
+
+          <!-- Passenger Information -->
+          <div class="mt-6 w-[90%]">
+
+            <div>
+              <h1 class="mb-4 font-semibold">Passenger Name*</h1>
+            <input class="border py-6 w-full pl-6 rounded-xl mb-6"  type="text" placeholder="Enter your name">
+            </div>
+            <div>
+              <h1 class="mb-4 font-semibold">Phone Number*</h1>
+            <input class="border py-6 w-full pl-6 rounded-xl mb-6"  type="text" placeholder="Enter your phone number">
+            </div>
+            <div>
+              <h1 class="mb-4 font-semibold">Email ID*</h1>
+            <input class="border py-6 w-full pl-6 rounded-xl mb-6"  type="text" placeholder="Enter your email id">
+            </div>
+           
+          </div>
+          <!-- Passenger Information -->
+
+          <button id="modalBtn" class="my-6 mr-8 py-4 rounded-2xl text-white px-8 w-[90%]  bg-green-500">
+            Next
+          </button>
+        </div>
+      </div>
+
+      <!-- This is the modal section -->
+      <div id="modal" class="fixed top-0 left-0 w-screen h-screen z-10 backdrop-blur-sm hidden justify-center items-center">
+
+        <div class="w-[718px] h-[481px] rounded-2xl bg-white border">
+          <div class="flex justify-center items-center mt-14 mb-9">
+            <img src="images/success.png" alt="">
+          </div>
+          <div class="flex justify-center items-center pb-9">
+            <span class="text-2xl font-bold text-[#27AE60]">Success</span>
+          </div>
+          <div class="mx-16">
+            <p class="text-center">Thank you for Booking Our Bus Seats. <br> 
+              We are working hard to find the best service and deals for you. <br>
+              Shortly you will find a confirmation in your email.</p>
+          </div>
+
+          <div class="flex justify-center items-center mt-5">
+            <button class="btn py-4 px-24 rounded-[32px] bg-[#27AE60] text-white">Continue</button>
+          </div>
+        </div>
+      </div>
+      <!-- This is the modal section end -->
+
+     </section>
+        <!-- Select Seat Section end -->
     </main>
 
-     
+
+
+
+    <!-- This is the footer section start -->
+    <footer class="bg-black mt-20">
+      <div class="px-24 py-14 flex flex-col lg:flex-row justify-between">
+         <div>
+             <h1 class="text-3xl text-white">P-Ticket</h1>
+             <h2 class="text-gray-400 py-3">P-Ticket is a digital platform to make your <br> daily commuting better.</h2>
  
-    
+         </div>
+         <div>
+             <h1 class="text-xl text-white py-3">Download our app</h1>
+             <div class="flex flex-col lg:flex-row border">
+                 <div class="justify-center items-center flex p-2">
+                      <img src="images/playstore.png" alt="">
+                 </div>
+                 <div>
+                     <h1 class="text-l text-white">Get it on</h1>
+                     <h2 class="text-xl text-white">Google Play</h2>
+                 </div>
+             </div>
 
-    <footer>
-
-    </footer>
-
+         </div>
+ 
+      </div>
+      <div class="border mx-24"></div>
+      <div class="px-24 py-14 flex flex-col lg:flex-row justify-between">
+         <div>
+             <h1 class="text-gray-400">@all rights reserved, P-Ticket services limited.2024</h1>
+ 
+         </div>
+         <div class="flex flex-col lg:flex-row gap-5 text-white">
+             <h1>Terms & Condition</h1>
+             <h1>Return & refund policy</h1>
+             <h1>Privacy policy</h1>
+         </div>
+      </div>
+     </footer>
+    <!-- This is the footer section end -->
     <script src="index.js"></script>
 </body>
 </html>
