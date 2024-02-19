@@ -52,6 +52,7 @@ function printSeats(newSelected) {
   });
 }
 
+
 // Price Calculate
 const applyBtn = document.getElementById('applyBtn');
 const totalPrice = document.getElementById('total-price');
@@ -81,17 +82,35 @@ applyBtn.addEventListener('click', function () {
 });
            
 
-
-
 // Modal javascript Start
 const nextBtn = document.getElementById('nextBtn');
 const modal = document.getElementById('modal');
+
+
 nextBtn.addEventListener('click', function () {
-  modal.style.display = 'flex';
+    modal.style.display = 'flex';
+    document.getElementById('name').value = '';
+    document.getElementById('number').value = '';
+    document.getElementById('email').value = ''; 
 });
-modal.addEventListener('click', function () {
+  modal.addEventListener('click', function () {
   modal.style.display = 'none';
 });
 // Modal Javascript End
 
 
+// Personal Information Start
+
+
+// const number = document.getElementById('number');
+// const value2 = number.value;
+
+// const email = document.getElementById('email');
+// const value3 = email.value;
+// const name = document.getElementById('name');
+// const value1 = name.value;
+
+// nextBtn.addEventListener('click', function(){
+//     console.log('connect');
+// })
+// Personal Information End
