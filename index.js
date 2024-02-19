@@ -2,14 +2,12 @@ const ALPHABETS = 'ABCDEFGHIJ';
 
 const wrapper = document.getElementById('seats');
 const selectedSeatsWrapper = document.getElementById('selected-seats');
-const totalPrice = document.getElementById('total-price');
-const couponInput = document.getElementById('coupon-input');
-const applyBtn = document.getElementById('applyBtn');
-const grandTotal = document.getElementById('grand-price');
-const modal = document.getElementById('modal');
-const nextBtn = document.getElementById('nextBtn');
 
-const SELECTED_SEATS = [];
+
+
+
+
+const selectedSeats = [];
 
 ALPHABETS.split('').forEach(function (item) {
   const row = document.createElement('div');
@@ -23,59 +21,72 @@ ALPHABETS.split('').forEach(function (item) {
     row.appendChild(button);
     button.addEventListener('click', function (e) {
       // Check if already selected
-      if (SELECTED_SEATS.includes(item + i)) {
-        const index = SELECTED_SEATS.indexOf(item + i);
-        SELECTED_SEATS.splice(index, 1);
+      if (selectedSeats.includes(item + i)) {
+        const index = selectedSeats.indexOf(item + i);
+        selectedSeats.splice(index, 1);
         e.target.className = 'py-2 px-4 w-20 bg-gray-200 text-center';
       } else {
-        if (SELECTED_SEATS.length < 4) {
+        if (selectedSeats.length < 4) {
           e.target.className =
             'py-2 px-4 w-20 bg-green-500 text-center text-white';
-          SELECTED_SEATS.push(item + i);
+          selectedSeats.push(item + i);
         }
       }
-      console.log(SELECTED_SEATS);
-      printSeats(SELECTED_SEATS);
-      calcPriceAndPrint(SELECTED_SEATS);
+      console.log(selectedSeats);
+      printSeats(selectedSeats);
+      calcPriceAndPrint(selectedSeats);
     });
   }
   wrapper.appendChild(row);
 });
 
-function printSeats(NEW_SELECTED) {
+function printSeats(newSelected) {
   selectedSeatsWrapper.innerHTML = '';
-  NEW_SELECTED.forEach(function (item) {
+  newSelected.forEach(function (item) {
     selectedSeatsWrapper.innerHTML += `
         <div class='flex justify-between'>
             <span>${item}</span>
-            <span>Economoy</span>
+            <span>Economy</span>
             <span>550</span>
         </div>`;
   });
 }
 
-function calcPriceAndPrint(NEW_SELECTED) {
-  totalPrice.textContent = 550 * NEW_SELECTED.length;
-  grandTotal.textContent = 550 * NEW_SELECTED.length;
+// Price Calculate
+const applyBtn = document.getElementById('applyBtn');
+const totalPrice = document.getElementById('total-price');
+const grandTotal = document.getElementById('grand-price');
+const couponInput = document.getElementById('coupon-input');
+
+function calcPriceAndPrint(newSelected) {
+  totalPrice.textContent = 550 * newSelected.length;
+  grandTotal.textContent = 550 * newSelected.length;
 }
 
 applyBtn.addEventListener('click', function () {
-  const totalPrice = 550 * SELECTED_SEATS.length;
+  const totalPrice = 550 * selectedSeats.length;
   const value = couponInput.value;
   if (value === 'NEW15') {
     grandTotal.textContent = 0.15 * totalPrice;
+    grandTotal.innerText = totalPrice - grandTotal.textContent;
+    document.getElementById('coupon-input').value = '';
+    
   } else if (value === 'Couple 20') {
     grandTotal.textContent = 0.2 * totalPrice;
+    grandTotal.innerText = totalPrice - grandTotal.textContent;
+    document.getElementById('coupon-input').value = '';
   } else {
     alert('Invalid coupon!');
   }
 });
-
+           
 
 
 
 // Modal javascript Start
-modalBtn.addEventListener('click', function () {
+const nextBtn = document.getElementById('nextBtn');
+const modal = document.getElementById('modal');
+nextBtn.addEventListener('click', function () {
   modal.style.display = 'flex';
 });
 modal.addEventListener('click', function () {
@@ -84,11 +95,3 @@ modal.addEventListener('click', function () {
 // Modal Javascript End
 
 
-// Buy Tickets
-
-const buyTicket = document.getElementById('buyTicket');
-buyTicket.addEventListener('click', function(){
-    // console.log('shah Arefin ahmed');
-   const phParibahan = document.getElementById('phParibahan').innerText;
-   return phParibahan;
-})
