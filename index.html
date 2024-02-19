@@ -10,9 +10,21 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <!-- Font Family Link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+
+    <style>
+      .font-raleway{
+        font-family: "Raleway", sans-serif;
+      }
+  </style>
+
 </head>
-<body>
-  
+<body class="font-raleway">
+    <!-- This is the header Section Start-->
     <header class="container mx-auto lg:mt-12">
         <!-- This is navbar section start -->
         <div class="navbar bg-base-100">
@@ -58,7 +70,9 @@
           </section>
         <!-- banner section end -->
     </header>
+    <!-- This is the headaer Section End -->
 
+    <!-- This is the main Section Start -->
     <main class="container lg:mt-24 lg:mx-auto mx-[20px] lg:min-h-screen">
         <section>
             <h1 class="lg:text-4xl text-2xl text-center font-bold lg:pb-7 pb-5">Best offers for you</h1>
@@ -163,7 +177,7 @@
 
 
         <!-- Select Seat Section Start -->
-     <section class="pt-6 border rounded-3xl">
+     <section class="pt-6 pb-6 border rounded-3xl">
       <div class="flex w-full">
         <div class="flex-1">
           <h3 class="pl-8 text-2xl pb-2">Select your seat</h3>
@@ -270,9 +284,7 @@
      </section>
         <!-- Select Seat Section end -->
     </main>
-
-
-
+    <!-- This is the main Section End -->
 
     <!-- This is the footer section start -->
     <footer class="bg-black mt-20">
