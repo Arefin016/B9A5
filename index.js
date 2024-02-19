@@ -3,10 +3,6 @@ const ALPHABETS = 'ABCDEFGHIJ';
 const wrapper = document.getElementById('seats');
 const selectedSeatsWrapper = document.getElementById('selected-seats');
 
-
-
-
-
 const selectedSeats = [];
 
 ALPHABETS.split('').forEach(function (item) {
@@ -14,31 +10,37 @@ ALPHABETS.split('').forEach(function (item) {
   row.className = 'flex flex-item gap-10';
   row.innerHTML = `<button class="py-2 px-4 w-10">${item}</button>`;
 
-  for (let i = 1; i <= 4; i++) {
+    let count = 0;
+    let count1 = 40;
+
+  for (let i = 1; i <= 4; i++){
     const button = document.createElement('button');
-    button.className = 'py-2 px-4 w-20 bg-gray-200 text-center';
+    button.className = 'py-3 px-3 w-20 bg-gray-200 text-center';
     button.textContent = item + i;
     row.appendChild(button);
-    button.addEventListener('click', function (e) {
-      // Check if already selected
-      if (selectedSeats.includes(item + i)) {
-        const index = selectedSeats.indexOf(item + i);
-        selectedSeats.splice(index, 1);
-        e.target.className = 'py-2 px-4 w-20 bg-gray-200 text-center';
-      } else {
-        if (selectedSeats.length < 4) {
-          e.target.className =
-            'py-2 px-4 w-20 bg-green-500 text-center text-white';
-          selectedSeats.push(item + i);
+    button.addEventListener('click', function(e){
+        //Cheaked If already Selected
+        if(selectedSeats.includes(item + i)){
+            const index = selectedSeats.indexOf(item + i);
+            selectedSeats.splice(index, 1);
+            e.target.className = 'py-2 px-4 w-20 bg-gray-200 text-center';
+        }else {
+            if(selectedSeats.length < 4){
+                e.target.className = 'py-2 px-4 w-20 bg-green-500 text-center text-white';
+                count = count + 1;
+                selectedSeats.push(item + i);
+                document.getElementById('count').innerText = count; 
+            }
         }
-      }
-      console.log(selectedSeats);
-      printSeats(selectedSeats);
-      calcPriceAndPrint(selectedSeats);
+        console.log(selectedSeats);
+        printSeats(selectedSeats);
+        calcPriceAndPrint(selectedSeats);
+
     });
   }
   wrapper.appendChild(row);
 });
+
 
 function printSeats(newSelected) {
   selectedSeatsWrapper.innerHTML = '';
@@ -53,7 +55,9 @@ function printSeats(newSelected) {
 }
 
 
-// Price Calculate
+
+// Price Calculate Start
+
 const applyBtn = document.getElementById('applyBtn');
 const totalPrice = document.getElementById('total-price');
 const grandTotal = document.getElementById('grand-price');
@@ -78,8 +82,10 @@ applyBtn.addEventListener('click', function () {
     document.getElementById('coupon-input').value = '';
   } else {
     alert('Invalid coupon!');
+    document.getElementById('coupon-input').value = '';
   }
 });
+// Price Calculation End
            
 
 // Modal javascript Start
@@ -99,9 +105,11 @@ nextBtn.addEventListener('click', function () {
 // Modal Javascript End
 
 
+
+
+
+
 // Personal Information Start
-
-
 // const number = document.getElementById('number');
 // const value2 = number.value;
 
